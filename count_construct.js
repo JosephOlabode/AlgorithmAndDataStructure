@@ -15,3 +15,11 @@ function countConstruct(target, wordBank, memo = {}) {
     memo[target] = totalCount;
     return totalCount;
 }
+
+// brute force
+// O((n ^m) * n ) -> time
+// O(m^2) -> space
+
+// memoized
+// O(n * (m ^ 2)) -> time
+// O(m ^2) -> space
