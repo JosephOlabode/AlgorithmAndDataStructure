@@ -45,5 +45,6 @@ logAllPairOfArray2(boxes);
 console.log(result1);
 console.log(result1.length);
 //console.log(result2);
-console.log(result2.filter((item, i, ar) => ar.indexOf(item) === i));
-console.log(result2.length);
+const unique = result2.filter((item, i, ar) => ar.indexOf(item) === i);
+console.log(unique);
+console.log(unique.length);
