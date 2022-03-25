@@ -1,12 +1,11 @@
-function sum(...args) {
-    return args.reduce((a, b) => a + b);
+const nemo = ['nemo'];
+const largeArray = new Array(100).fill('nemo');
+function findingNemo(array) {
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] === 'nemo') {
+            console.log('Found NEMO!');
+        }
+    }
 }
-console.log(sum(1, 2, 3, 4));
-
-const array = [1, 2, -3, 4, 6, -8];
-function filterOps(array) {
-    return array.filter(num => num > 0).map(num => num * num);
-}
-
-console.log(filterOps(array));
+findingNemo(largeArray);
 
