@@ -15,9 +15,10 @@ function logAllPairOfArray(array) {
 
 function logAllPairOfArray2(array) {
     for(let i = 0, j = array.length -1; i < array.length; i++, j--) {
-        let nextForward = i + 1;
+        const nextForward = i + 1;
         const nextBackward = j - 1;
-        if(nextBackward < array.length){
+        
+        if(nextForward < array.length){
             result2.push(array[i] + ', ' + array[nextForward]);
             result2.push(array[j] + ', ' + array[nextForward]);
         }
@@ -26,6 +27,8 @@ function logAllPairOfArray2(array) {
             result2.push(array[j] + ', ' + array[nextBackward]);
             result2.push(array[i] + ', ' + array[nextBackward]);
         }
+        result2.push(array[i]+ ', '+ array[i]);
+        result2.push(array[j] + ', ' + array[j]);
         result2.push(array[i]+ ', '+ array[j]);
         result2.push(array[j] + ', ' + array[i]);
     }
@@ -44,7 +47,8 @@ logAllPairOfArray2(boxes);
 
 console.log(result1);
 console.log(result1.length);
-//console.log(result2);
+
 const unique = result2.filter((item, i, ar) => ar.indexOf(item) === i);
 console.log(unique);
 console.log(unique.length);
+console.log(result2.length);
