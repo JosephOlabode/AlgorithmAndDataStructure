@@ -32,10 +32,9 @@ function getPairThatAddUpToTarget2(array, target) {
 
 // Time: O(n), Space: O(n)
 function getPairThatAddUpToTarget3(array, target) {
-    const length = array.length;
     const numbMap = {};
 
-    for(let i = 0; i < length; i++) {
+    for(let i = 0; i < array.length; i++) {
         const currentMapVal = numbMap[array[i]];
         if(currentMapVal >= 0) {
             return [currentMapVal, i];
