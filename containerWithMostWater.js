@@ -1,5 +1,5 @@
 function getContainerWithMostWaterCapacity(array) {
-    const containerMap = {};
+    //const containerMap = {};
     let max = 0;
 
     for(let i = 0; i < array.length; i++) {
@@ -7,15 +7,16 @@ function getContainerWithMostWaterCapacity(array) {
             const area = Math.min(array[i], array[j]) * (j - i);
             if(area > max) {
                 max = area;
-                containerMap[max] = [array[i], array[j]]
+                //containerMap[max] = [array[i], array[j]]
             }
         }
     }
 
-    if(max > 0)
-        return containerMap[max];
+    //if(max > 0)
+    //    return containerMap[max];
 
-    return null;
+    //return null
+    return max;
 }
 
 const containerArray = [7, 1, 2, 3, 9];
