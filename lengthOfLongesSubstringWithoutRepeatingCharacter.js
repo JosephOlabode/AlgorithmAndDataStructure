@@ -7,13 +7,11 @@
 // "abcbdca"
 
 // Time: O(n ^ 3 logn), Space: O(n)
-function lengthOfLongestSubStringWithoutRepetition(string){
+function lengthOfLongestSubStringWithoutRepetition(string) {
     let longestSubstring = 0;
     let substring = []; // O(n)
 
-    if(string.length <= 1) {
-        return string.length;
-    }
+    if(string.length <= 1) return string.length;
 
     for(let i = 0; i < string.length; i++) { // O(n)
         for(let j = i; j < string.length; j++) { // O(n)
@@ -37,5 +35,26 @@ function lengthOfLongestSubStringWithoutRepetition(string){
     return longestSubstring;
 }
 
-const string = "abcbdc";
-console.log(lengthOfLongestSubStringWithoutRepetition(string));
+// Time: O(n ^ 2), Space: O(n) cos of seenChar
+function lengthOfLongestSubStringWithoutRepetition2(string) {
+    if(string.length <= 1) return string.length;
+
+    let longest = 0;
+    for (let left = 0; left < string.length; left++) { // O(n)
+        let seenChar = {}, currentlength = 0;
+        for(let right = left; right < string.length; right++){ // O(n)
+            const currentChar = string[right];
+            if(!seenChar[currentChar]) {
+                currentlength++;
+                seenChar[currentChar] = true;
+                longest = Math.max(longest, currentlength);
+            } else {
+                break;
+            }
+        }
+    }
+    return longest;
+}
+
+const string = "abcbdca";
+console.log(lengthOfLongestSubStringWithoutRepetition2(string));
