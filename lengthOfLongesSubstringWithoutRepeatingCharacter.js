@@ -56,5 +56,25 @@ function lengthOfLongestSubStringWithoutRepetition2(string) {
     return longest;
 }
 
+//Time: O(n), Space: O(n)
+function lengthOfLongestSubStringWithoutRepetition3(string) {
+    if(string.length <= 1) return string.length;
+    let seenChars = {}
+    let left = 0, longest = 0;
+
+    for(let right = 0; right < string.length; right++) {
+        const currentChar = string[right];
+        let prevSeenChar = seenChars[currentChar];
+
+        if(prevSeenChar >= left) {
+            left = prevSeenChar++;
+        }
+        seenChars[currentChar] = right;
+        longest = Math.max(longest, (right-left))
+    }
+
+    return longest;
+}
+
 const string = "abcbdca";
-console.log(lengthOfLongestSubStringWithoutRepetition2(string));
+console.log(lengthOfLongestSubStringWithoutRepetition3(string));
