@@ -43,7 +43,7 @@ function validSubPalindrome(string, left, right) {
     }
     return true;
 }
-
+// Time: O(n), Space: O(1)
 function makeItPalindrome2(string) {
     let left = 0, right = string.length -1;
     while(left < right) {
