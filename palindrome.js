@@ -7,6 +7,7 @@ function checkIfIsPalindrome(string) {
     return true;
 }
 
+// Time: O(n ^ 2), Space: O(1)
 function makeItPalindrome(string) {
     string.replace(/[~A-Za-z0-9]/g, '')
     formatted = string.toLowerCase();
@@ -31,5 +32,30 @@ function makeItPalindrome(string) {
         }
     }
 }
+
+function validSubPalindrome(string, left, right) {
+    while(left < right) {
+        if(string[left] !== string[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+function makeItPalindrome2(string) {
+    let left = 0, right = string.length -1;
+    while(left < right) {
+        if(string[left] !== string[right]) {
+            return validSubPalindrome(string, left + 1, right) || validSubPalindrome(string, left, right -1);
+        }
+
+        left++;
+        right--;
+    }
+}
+
+
 const string = "abcdefdba";
-console.log(makeItPalindrome(string));
+console.log(makeItPalindrome2(string));
