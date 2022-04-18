@@ -86,18 +86,14 @@ class LinkList {
         if(start === end) return;
         if(start <= this.headNode.data) return;
 
-        let currentNode = this.headNode;
-        let nextNode = null;
-        let tempNode = null;
-        let beforeStartNode = null;
-        let afterEndNode = null
+        let currentNode = this.headNode, beforeStartNode = null;
 
         while(currentNode.next !== null && currentNode.data !== start) {
             beforeStartNode = currentNode;
             currentNode = currentNode.next;
         }
 
-        nextNode = currentNode.next;
+        let nextNode = currentNode.next, tempNode = null, afterEndNode = null;
 
         while(nextNode.next !== null && nextNode.data !== end){
             tempNode = nextNode.next; 
@@ -192,8 +188,7 @@ function reverseNodes() {
     console.log('Before Reverse Operation');
     list.printNodes();
     console.log('\n')
-    //list.reversePortionOfList2(1, 8);
-    list.reverseNodes2();
+    list.reversePortionOfList2(1, 8);
     console.log('After Reverse Operation');
     //list.printNodes();
 }
