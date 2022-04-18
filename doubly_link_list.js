@@ -63,6 +63,8 @@ function double() {
     list.insertNodeAtEnd(3);
     list.insertChildNode(2, 4);
     list.insertChildNode(2, 5);
+    list.insertNodeAtEnd(7);
+    list.insertNodeAfterPosition(3, 6);
 
     console.log(JSON.stringify(list));
 }
