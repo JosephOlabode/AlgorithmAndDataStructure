@@ -82,28 +82,39 @@ class LinkList {
     }
 
     reverPortionOfList(start, end) {
+        if(start === end) return;
+        if(start <= this.headNode.data) return;
+
         let currentNode = this.headNode;
         let nextNode = null;
-        let startNode = null;
         let tempNode = null;
+        let beforeStartNode = null;
+        let afterEndNode = null
+
         while(currentNode.next !== null && currentNode.data !== start) {
+            beforeStartNode = currentNode;
             currentNode = currentNode.next;
         }
-        //console.log(currentNode);
-        startNode = currentNode;
+        
         nextNode = currentNode.next;
 
         while(nextNode.next !== null && nextNode.data !== end){
-            tempNode = nextNode.next;
-            nextNode.next = currentNode;
-            currentNode = nextNode;
+            tempNode = nextNode.next; 
+            nextNode.next = currentNode; 
+            currentNode = nextNode;  
             nextNode = tempNode;
         }
 
+        afterEndNode = nextNode.next;
+        beforeStartNode.next = nextNode;
         nextNode.next = currentNode;
-        currentNode = nextNode;
+        let reversed = currentNode;
 
-        startNode.next = currentNode;
+        while(reversed.data !== start) {
+            reversed = reversed.next;
+        }
+
+        reversed.next = afterEndNode;
     }
 
     // this is the solution from tutorial but did not work for me
@@ -140,12 +151,14 @@ function reverseNodes() {
      list.insertInBetween(3, 4)
      //list.removeNodeFromEnd();
      list.insertNodeAtEnd(6);
+     list.insertNodeAtEnd(7);
+     list.insertNodeAtEnd(8);
      //list.removeNode(2);
 
     console.log('Before Reverse Operation');
     list.printNodes();
     console.log('\n')
-    list.reverseNodes(3, 5);
+    list.reverPortionOfList(2, 8);
     console.log('After Reverse Operation');
     list.printNodes();
 }
