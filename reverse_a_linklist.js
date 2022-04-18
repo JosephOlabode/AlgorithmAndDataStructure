@@ -81,7 +81,8 @@ class LinkList {
         this.headNode = currentNode;
     }
 
-    reverPortionOfList(start, end) {
+    // Time: O(n), Space: O(1)
+    reversePortionOfList(start, end) {
         if(start === end) return;
         if(start <= this.headNode.data) return;
 
@@ -95,7 +96,7 @@ class LinkList {
             beforeStartNode = currentNode;
             currentNode = currentNode.next;
         }
-        
+
         nextNode = currentNode.next;
 
         while(nextNode.next !== null && nextNode.data !== end){
@@ -104,7 +105,7 @@ class LinkList {
             currentNode = nextNode;  
             nextNode = tempNode;
         }
-
+        
         afterEndNode = nextNode.next;
         beforeStartNode.next = nextNode;
         nextNode.next = currentNode;
@@ -129,6 +130,39 @@ class LinkList {
             current = next;
         }
         return prev
+    }
+    // Time: O(n), Space: O(1)
+    reversePortionOfList2(m, n) {
+        let currentPos = 1, currentNode = this.headNode, start = this.headNode;
+        while(currentPos < m) {
+            start = currentNode;
+            currentNode = currentNode.next;
+            currentPos++;
+        }
+        let newList = null, tail = currentNode;
+
+        while(currentPos >= m && currentPos <= n) {
+            const next = currentNode.next;
+            currentNode.next = newList;
+            newList = currentNode;
+            currentNode = next;
+            currentPos++;
+        }
+
+        start.next = newList;
+        tail.next = currentNode;
+        if(m > 1)  this.printNodes2(this.headNode);//return this.headNode;
+        else this.printNodes2(newList);//return newList;
+
+    }
+
+    printNodes2(head) {
+        let currentNode = head;
+        while(currentNode.next !== null) {
+            console.log(currentNode.data);
+            currentNode = currentNode.next;
+        }
+        console.log(currentNode.data);
     }
 
     printNodes() {
@@ -158,9 +192,10 @@ function reverseNodes() {
     console.log('Before Reverse Operation');
     list.printNodes();
     console.log('\n')
-    list.reverPortionOfList(2, 8);
+    //list.reversePortionOfList2(1, 8);
+    list.reverseNodes2();
     console.log('After Reverse Operation');
-    list.printNodes();
+    //list.printNodes();
 }
 
 reverseNodes();
