@@ -14,10 +14,20 @@ class DoublyLinkedList {
 
     insertNodeAtEnd(data) {
         let currentNode = this.headNode;
+        let prevNode = this.headNode;
         while(currentNode.next !== null) {
+            prevNode = currentNode;
             currentNode = currentNode.next;
         }
-        currentNode.next = new Node(data);
+
+        if(prevNode == null) {
+            currentNode.next = new Node(data);
+        } else {
+            const newNode = new Node(data);
+            currentNode.next = newNode;
+            newNode.prev = prevNode;
+        }
+        
     }
 
     insertChildNode(position, data) {
@@ -27,14 +37,20 @@ class DoublyLinkedList {
         }
 
         if(currentNode.next == null && currentNode.data !== position) {
-            return 'not found'
+            return
         }
 
-        // this moves to the last child
-        while(currentNode.child !== null) {
-            currentNode = currentNode.child;
+        if(currentNode.child == null) {
+            currentNode.child = new Node(data)
+        } else {
+            // this moves to the last child
+            while(currentNode.child !== null) {
+                currentNode = currentNode.child;
+            }
+            const newNode = new Node(data);
+            currentNode.next = newNode;
+            newNode.prev = currentNode;
         }
-        currentNode.child = new Node(data)
     }
 
     insertNodeAfterPosition(position, data) {
@@ -49,11 +65,38 @@ class DoublyLinkedList {
             let newNode = new Node(data);
             currentNode.next = newNode;
             newNode.next = nextNode;
+            newNode.prev = currentNode
         } else {
-            currentNode.next = new Node(data);
+            const newNode = new Node(data);
+            currentNode.next = newNode;
+            newNode.prev = currentNode
         }
     }
 
+    //from tutorial
+    // Time: O(n), Space: O(1)
+    flattenLinkList() {
+        if(!this.headNode) return this.headNode;
+        let currentNode = this.headNode;
+        while(currentNode !== null) {
+            if(currentNode.child === null) {
+                currentNode = currentNode.next;
+            } else {
+                let tail = currentNode.child;
+                while (tail.next !== null) {
+                    tail = tail.next;
+                }
+                tail.next = currentNode.next;
+                if(tail.next !== null) {
+                    tail.next.prev = tail;
+                }
+                currentNode.next = currentNode.child;
+                currentNode.next.prev = currentNode;
+                currentNode.child = null;
+            }
+        }
+        return this.headNode;
+    }
 
 }
 
@@ -61,12 +104,13 @@ function double() {
     const list = new DoublyLinkedList(1);
     list.insertNodeAtEnd(2);
     list.insertNodeAtEnd(3);
-    list.insertChildNode(2, 4);
-    list.insertChildNode(2, 5);
-    list.insertNodeAtEnd(7);
-    list.insertNodeAfterPosition(3, 6);
+    // list.insertChildNode(2, 4);
+    // list.insertChildNode(2, 5);
+    // list.insertNodeAtEnd(7);
+    // list.insertNodeAfterPosition(3, 6);
 
-    console.log(JSON.stringify(list));
+     console.log(list.headNode.next.prev);
+     console.log(list);
 }
 
 double();
