@@ -7,5 +7,21 @@ function findingNemo(array) {
         }
     }
 }
-findingNemo(largeArray);
+//findingNemo(largeArray);
 
+
+const obj = {
+    name: 'Joseph',
+    last_name: 'oLaboDe',
+    state_of_origin: {
+        label: 'Anambra',
+        value: 'Anambra'
+    }
+}
+const value = obj.state_of_origin.value.toLowerCase();
+const newObj = {
+    value: obj.state_of_origin.value.toLowerCase(),
+    name: 'Joseph'
+}
+console.log(newObj);
+console.log(JSON.stringify(obj));
