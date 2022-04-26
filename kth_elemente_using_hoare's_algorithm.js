@@ -1,9 +1,16 @@
-// Time: O(nlogn) or O(n ^ 2), Space: O(logn)
-function quicksort(array, left, right) {
+// Hoare's QuickSelect Algorithm
+
+// Time: O(n) or O(n ^ 2), Space: O(1)
+function quickSelect(array, left, right, indexToFind) {
     if(left < right) {
         const partitionIndex = partition(array, left, right);
-        quicksort(array, left, partitionIndex - 1);
-        quicksort(array, partitionIndex + 1, right);
+        if(partitionIndex === indexToFind) {
+            return array[partitionIndex];
+        } else if(indexToFind < partitionIndex) {
+            return quickSelect(array, left, partitionIndex -1, indexToFind);
+        } else {
+            return quickSelect(array, partitionIndex + 1, right, indexToFind);
+        }
     }
 }
 
@@ -29,6 +36,6 @@ function swap(array, i, j) {
 
 function getKthLargestElement(array, k) {
     const indexToFind = array.length - k;
-    quicksort(array, 0, array.length - 1);
+    quickSelect(array, 0, array.length - 1, indexToFind);
     return array[indexToFind];
 }
