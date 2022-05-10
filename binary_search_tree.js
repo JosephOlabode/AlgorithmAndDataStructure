@@ -6,6 +6,9 @@ class Node {
     }
 }
 
+
+// Best case: O(log(n))
+// Worst case: O(n)
 class BST {
     constructor(){
         this.root = null;
@@ -30,8 +33,25 @@ class BST {
             return searchTree(node);
         }
     }
+
+    find(data) {
+        if(this.root == null) {
+            return false;
+        }
+
+        let node = this.root;
+        let found = false;
+
+        while(node && !found) {
+            if(data < node.value) {
+                node = node.left;
+            } else if(data > node.value) {
+                node = node.right;
+            } else {
+                found = node;
+            }
+        }
+        return found ? true: false;
+    }
 }
 
-const bst = new BST();
-console.log(bst.insert(3))
-console.log(bst.insert(5));
