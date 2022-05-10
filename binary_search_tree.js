@@ -9,7 +9,7 @@ class Node {
 
 // Best case: O(log(n))
 // Worst case: O(n)
-class BST {
+module.exports = class BST {
     constructor(){
         this.root = null;
     }
