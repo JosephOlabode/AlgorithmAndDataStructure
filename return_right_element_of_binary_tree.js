@@ -17,7 +17,6 @@ const bfs_solution = function(root) {
             count++;
         }
 
-        //result.push(currentLevelValues);
         result.push(currentLevelValues[currentLevelValues.length - 1]);
     }
 
@@ -25,7 +24,25 @@ const bfs_solution = function(root) {
 }
 
 const dfs_solution = function(root) {
+    if(!root) return [];
+    const result = [];
+    const stack = [root];
 
+    while(stack.length) {
+        const currentNode = stack.pop();
+        result.push(currentNode.value);
+
+        if(currentNode.left) {
+            stack.push(currentNode.left);
+            dfs_solution(currentNode.left);
+        }
+
+        if(currentNode.right) {
+            stack.push(currentNode.right);
+            dfs_solution(currentNode.right);
+        }
+    }
+    return result;
 }
 
 
@@ -40,4 +57,4 @@ bst.insert(13);
 bst.insert(8);
 bst.insert(10);
 
-console.log(bfs_solution(bst.root));
+console.log(dfs_solution(bst.root));
