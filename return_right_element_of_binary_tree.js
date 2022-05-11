@@ -23,6 +23,7 @@ const bfs_solution = function(root) {
     return result;
 }
 
+// not working just a test
 const dfs_solution = function(root) {
     if(!root) return [];
     const result = [];
@@ -45,6 +46,25 @@ const dfs_solution = function(root) {
     return result;
 }
 
+const dfs_solution2 = function(root) {
+    const result = [];
+    dfs(root, 0, result);
+    return result;
+}
+
+const dfs = function(node, currentLevel, result) {
+    if(!node) return;
+    if(currentLevel >= result.length) {
+        result.push(node.value);
+    }
+    if(node.right) {
+        dfs(node.right, currentLevel + 1, result);
+    }
+    if(node.left) {
+        dfs(node.left, currentLevel + 1, result);
+    }
+}
+
 
 const bst = new BST();
 bst.insert(11);
@@ -57,4 +77,4 @@ bst.insert(13);
 bst.insert(8);
 bst.insert(10);
 
-console.log(dfs_solution(bst.root));
+console.log(dfs_solution2(bst.root));
