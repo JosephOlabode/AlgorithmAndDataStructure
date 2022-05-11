@@ -1,5 +1,6 @@
 const BST = require('./binary_search_tree');
 
+// Time: O(n) Space: O(n)
 const bfs_solution = function(root) {
     if(!root) return [];
     const result = [];
@@ -45,7 +46,7 @@ const dfs_solution = function(root) {
     }
     return result;
 }
-
+// Time: O(n), Space: O(n)
 const dfs_solution2 = function(root) {
     const result = [];
     dfs(root, 0, result);
