@@ -1,6 +1,6 @@
 const BST = require('./binary_search_tree');
 const traverse = function(rootNode, nodeArray = []) {
-    if(!rootNode) return
+    if(!rootNode) return nodeArray;
     nodeArray.push(rootNode.value);
 
     if(rootNode.left) {
