@@ -25,3 +25,31 @@ bst.insert(10);
 
 console.log(traverse(bst.root));
 
+
+const countNodes = function (root) {
+    if(!root) return 0;
+    const height = getTreeHeight(root);
+    if(height == 0) return 1;
+    const upperCount = Math.pow(2, height) - 1;
+
+    let left = 0, right = upperCount;
+    while(left < right) {
+        let indexToFind = Math.ceil((left + right) / 2);
+        if(nodeExist(indexToFind, height, root)) {
+            left = indexToFind;
+        } else {
+            right = indexToFind - 1;
+        }
+    }
+
+    return upperCount + left + 1;
+}
+
+
+const getTreeHeight = function(root) {
+    
+}
+
+const nodeExist = function(indexToFind, height, root) {
+
+}
