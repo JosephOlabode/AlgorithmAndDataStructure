@@ -1,3 +1,4 @@
+// Time: O(n), Space: O(n)
 const CheckIfIsValidBinarySearchTree = function(root) {
     if(!root) return true;
 
