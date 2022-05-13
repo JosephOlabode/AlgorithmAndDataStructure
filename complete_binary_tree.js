@@ -23,7 +23,7 @@ bst.insert(13);
 bst.insert(8);
 bst.insert(10);
 
-console.log(traverse(bst.root));
+//console.log(traverse(bst.root));
 
 
 const countNodes = function (root) {
@@ -66,9 +66,10 @@ const nodeExist = function(indexToFind, height, node) {
             node = node.left;
             right = midOfNode - 1;
         }
-
         count++;
     }
 
     return node !== null;
 }
+
+console.log(countNodes(bst.root));
