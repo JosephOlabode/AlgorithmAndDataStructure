@@ -47,9 +47,28 @@ const countNodes = function (root) {
 
 
 const getTreeHeight = function(root) {
-    
+    let height = 0;
+    while(root.left !== null) {
+        height++;
+        root = root.left;
+    }
+    return height;
 }
 
-const nodeExist = function(indexToFind, height, root) {
+const nodeExist = function(indexToFind, height, node) {
+    let left = 0, right = Math.pow(2, height) -1, count = 0;
+    while(count < height) {
+        let midOfNode = Math.ceil((left + right) /2);
+        if(indexToFind >= midOfNode) {
+            node = node.right;
+            left = midOfNode;
+        } else {
+            node = node.left;
+            right = midOfNode - 1;
+        }
 
+        count++;
+    }
+
+    return node !== null;
 }
