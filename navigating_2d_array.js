@@ -5,23 +5,15 @@
  * An island is land connected horizontally or vertically. but not diagonally
  */
 
-// Time: O(n), Space: O(n)
-const traversalDFS = function (matrix) {
-    const seen = new Array(matrix.length).fill(0)
-    .map(() => new Array(matrix[0].length).fill(false));
-
-    const values = [];
-
-    dfs(matrix, 0, 0, seen, values);
-    return values;
-}
-
-const dfs = function(matrix, row, col, seen, values) {
+const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
     if(row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || seen[row][col])
         return;
 
-    values.push(matrix[row][col]);
-    seen[row][col] = true;
+    if(matrix[row][col] !== 0) {
+        islandFormation.push(matrix[row][col]);
+        seen[row][col] = true;
+    }
+    
 
     const directions = [
         [-1, 0], //up
@@ -32,7 +24,14 @@ const dfs = function(matrix, row, col, seen, values) {
 
     for(let i = 0; i < directions.length; i++) {
         const currentDir = directions[i];
-        dfs(matrix, row + currentDir[0], col + currentDir[1], seen, values);
+        if (matrix[row + currentDir[0]][col + currentDir[1]] == 0) {
+            numberOfIsland.push(islandFormation);
+        }
+    }
+    
+    for(let i = 0; i < directions.length; i++) {
+        const currentDir = directions[i];
+        dfs(matrix, row + currentDir[0], col + currentDir[1], seen, islandFormation, numberOfIsland);
     }
 }
 // my solution: dfs traversal
@@ -50,5 +49,9 @@ const getNumberOfConnectedIsland = function (matrix) {
     const numberOfIsland = [];
     const islandFormation = [];
 
+    dfs(matrix, 0, 0, seen, islandFormation, numberOfIsland);
+
+    return numberOfIsland.length;
 
 }
+
