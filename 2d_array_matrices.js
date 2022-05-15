@@ -7,6 +7,7 @@ const normal2DTraversal = function(array) {
     }
 }
 
+// Time: O(n), Space: O(n)
 const traversalDFS = function (matrix) {
     const seen = new Array(matrix.length).fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
@@ -37,6 +38,7 @@ const dfs = function(matrix, row, col, seen, values) {
     }
 }
 
+// Time: O(n), Space: O(n)
 const traversalBFS = function(matrix) {
     const seen = new Array(matrix.length).fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
