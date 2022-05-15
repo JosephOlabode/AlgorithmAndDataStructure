@@ -16,12 +16,34 @@ class PriorityQueue {
     }
 
     isEmpty() {
-        return this._heap.length == 0 ? true: false;
+        return this.size() === 0 ;
     }
 
     peek() {
         if(!this.isEmpty()) {
-            return this._heap[0]
+            return this._heap[0];
         }
+    }
+
+    _parent(index) {
+        return Math.floor((index - 1) / 2);
+    }
+
+    _leftChild(index) {
+        return index * 2 + 1;
+    }
+
+    _rightChild(index) {
+        return index * 2 + 2;
+    }
+
+    _swap(i, j) {
+        const temp = this._heap[i];
+        this._heap[i] = this._heap[j];
+        this._heap[j] = temp;
+    }
+
+    _compare(i, j) {
+        
     }
 }
