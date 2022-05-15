@@ -5,35 +5,6 @@
  * An island is land connected horizontally or vertically. but not diagonally
  */
 
-const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
-    if(row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || seen[row][col])
-        return;
-
-    if(matrix[row][col] !== 0) {
-        islandFormation.push(matrix[row][col]);
-        seen[row][col] = true;
-    }
-    
-
-    const directions = [
-        [-1, 0], //up
-        [0, 1], //right
-        [1, 0], //down
-        [0, -1] //left
-    ];
-
-    for(let i = 0; i < directions.length; i++) {
-        const currentDir = directions[i];
-        if (matrix[row + currentDir[0]][col + currentDir[1]] == 0) {
-            numberOfIsland.push(islandFormation);
-        }
-    }
-    
-    for(let i = 0; i < directions.length; i++) {
-        const currentDir = directions[i];
-        dfs(matrix, row + currentDir[0], col + currentDir[1], seen, islandFormation, numberOfIsland);
-    }
-}
 // my solution: dfs traversal
 
 // 0. Generate the seen array list => done
@@ -53,6 +24,44 @@ const getNumberOfConnectedIsland = function (matrix) {
 
     return numberOfIsland.length;
 
+}
+
+const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
+    if(row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || seen[row][col])
+        return;
+
+    if(matrix[row][col] !== 0) {
+        islandFormation.push(matrix[row][col]);
+        seen[row][col] = true;
+    }
+    
+
+    const directions = [
+        [-1, 0], //up
+        [0, 1], //right
+        [1, 0], //down
+        [0, -1] //left
+    ];
+
+    let nodeConnection = [];
+    for(let i = 0; i < directions.length; i++) {
+        const currentDir = directions[i];
+        connection = [];
+
+        if (matrix[row + currentDir[0], col + currentDir[1]] == 0) {
+            nodeConnection.push(0);
+        }
+    }
+    
+    if(nodeConnection[0] == 0 && nodeConnection[1] == 0 && nodeConnection[2] == 0 && nodeConnection[3] == 0) {
+        numberOfIsland.push(islandFormation);
+    }
+    nodeConnection = [];
+    
+    for(let i = 0; i < directions.length; i++) {
+        const currentDir = directions[i];
+        dfs(matrix, row + currentDir[0], col + currentDir[1], seen, islandFormation, numberOfIsland);
+    }
 }
 
 const matrix = [
