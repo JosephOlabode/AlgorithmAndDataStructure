@@ -44,6 +44,21 @@ class PriorityQueue {
     }
 
     _compare(i, j) {
-        
+        return this._comparator(this._heap[i], this._heap[j]);
+    }
+
+    push(value) {
+        this._heap.push(value);
+        this._siftUp();
+        return this.size();
+    }
+
+    _siftUp() {
+        let nodeIndex = this._size() - 1;
+
+        while(nodeIndex > 0 && this._compare(nodeIndex, this._parent(nodeIndex))) {
+            this._swap(nodeIndex, this._parent(nodeIndex));
+            nodeIndex = this._parent(nodeIndex);
+        }
     }
 }
