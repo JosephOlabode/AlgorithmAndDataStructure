@@ -37,16 +37,18 @@ const dfs = function(matrix, row, col, seen, values) {
 }
 // my solution: dfs traversal
 
-// 0. Generate the seen array list
+// 0. Generate the seen array list => done
 // 1. Traverse the array
 // 2. generate the Island
 // 3. store each generated island in num of island array
 // 4. return the count of num of island as the answer
 
-const getNumberOfConnectedIsland = function (array) {
+const getNumberOfConnectedIsland = function (matrix) {
     const seen = new Array(matrix.length).fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
 
     const numberOfIsland = [];
     const islandFormation = [];
+
+
 }
