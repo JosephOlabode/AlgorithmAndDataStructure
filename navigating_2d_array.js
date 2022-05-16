@@ -13,6 +13,7 @@
 // 3. store each generated island in num of island array
 // 4. return the count of num of island as the answer
 
+// Time: O(n), Space: O(n)
 const getNumberOfConnectedIsland = function (matrix) {
     const seen = new Array(matrix.length).fill(0)
     .map(() => new Array(matrix[0].length).fill(false));
@@ -85,6 +86,7 @@ const directions = [
     [0, -1] //left
 ];
 
+// Time: O(m * n), Space: O(n)
 const numberOfIslandBFS = function(matrix) {
     if(matrix.length === 0) return 0;
     let islandCount = 0;
