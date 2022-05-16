@@ -22,7 +22,6 @@ const getNumberOfConnectedIsland = function (matrix) {
 
     dfs(matrix, 0, 0, seen, islandFormation, numberOfIsland);
 
-    console.log(numberOfIsland);
     return numberOfIsland.length;
 
 }
@@ -66,7 +65,6 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
     }
     if(numberOfZeros >= 3) {
         numberOfIsland.push(islandFormation);
-        console.log('Island: ', islandFormation)
         islandFormation = [];
     }
     numberOfZeros = 0;
@@ -91,4 +89,4 @@ const matrix2 = [
     [1,0,1,0,1]
 ]
 
-console.log(getNumberOfConnectedIsland(matrix2));
+console.log(getNumberOfConnectedIsland(matrix));
