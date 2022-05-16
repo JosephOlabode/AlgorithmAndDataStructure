@@ -15,7 +15,7 @@ const directions = [
 const ROTTEN = 2;
 const FRESH = 1;
 const EMPTY = 0;
-
+// Time: O(n), Space: O(n)
 const orangesRotting = function(matrix) {
     if(matrix.length === 0) return 0;
 
