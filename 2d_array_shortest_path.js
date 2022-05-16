@@ -7,3 +7,17 @@
  * If it is impossible to reach a gate, leave INF as the value.
  * INF is eqaul to 2147483647
  */
+
+const matrix1 = [
+    [INF, -1, 0, INF],
+    [INF, INF, INF, -1],
+    [INF, -1, INF, -1],
+    [0, -1, INF, INF]
+];
+
+const matrix2 = [
+    [INF, -1, 0, INF],
+    [-1, INF, INF, -1],
+    [INF, -1, INF, -1],
+    [0, -1, INF, INF]
+];
