@@ -59,14 +59,14 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
         
     }
 
-    console.log('Island: ', islandFormation)
+    
     let numberOfZeros = 0;
     for(let i = 0; i < nodeConnection.length; i++) {
         if(nodeConnection[i] == 0) numberOfZeros++;
     }
     if(numberOfZeros >= 3) {
-        console.log('I entered here');
         numberOfIsland.push(islandFormation);
+        console.log('Island: ', islandFormation)
         islandFormation = [];
     }
     numberOfZeros = 0;
