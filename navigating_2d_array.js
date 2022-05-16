@@ -32,8 +32,8 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
 
     if(matrix[row][col] !== 0) {
         islandFormation.push(matrix[row][col]);
-        seen[row][col] = true;
     }
+    seen[row][col] = true;
     
 
     const directions = [
@@ -46,17 +46,20 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
     let nodeConnection = [];
     for(let i = 0; i < directions.length; i++) {
         const currentDir = directions[i];
-        connection = [];
 
         if (matrix[row + currentDir[0], col + currentDir[1]] == 0) {
             nodeConnection.push(0);
         }
     }
+    console.log('island: ', islandFormation);
+    console.log(numberOfIsland);
     
     if(nodeConnection[0] == 0 && nodeConnection[1] == 0 && nodeConnection[2] == 0 && nodeConnection[3] == 0) {
+        console.log('I entered here');
         numberOfIsland.push(islandFormation);
-    }
-    nodeConnection = [];
+        islandFormation = [];
+    } 
+   
     
     for(let i = 0; i < directions.length; i++) {
         const currentDir = directions[i];
