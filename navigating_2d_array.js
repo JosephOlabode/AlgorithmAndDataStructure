@@ -22,6 +22,7 @@ const getNumberOfConnectedIsland = function (matrix) {
 
     dfs(matrix, 0, 0, seen, islandFormation, numberOfIsland);
 
+    console.log(numberOfIsland);
     return numberOfIsland.length;
 
 }
@@ -46,19 +47,28 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
     let nodeConnection = [];
     for(let i = 0; i < directions.length; i++) {
         const currentDir = directions[i];
-
-        if (matrix[row + currentDir[0], col + currentDir[1]] == 0) {
-            nodeConnection.push(0);
+        const newRow = row + currentDir[0];
+        const newCol = col + currentDir[1];
+        
+        if(newRow >= 0 && newRow < matrix.length && newCol >= 0 && newCol < matrix[0].length){
+            const node = matrix[row + currentDir[0]][col + currentDir[1]];
+            if ( node == 0) {
+                nodeConnection.push(0);
+            }
         }
+        
     }
-    console.log('island: ', islandFormation);
-    console.log(numberOfIsland);
-    
-    if(nodeConnection[0] == 0 && nodeConnection[1] == 0 && nodeConnection[2] == 0 && nodeConnection[3] == 0) {
+
+    let numberOfZeros = 0;
+    for(let i = 0; i < nodeConnection.length; i++) {
+        if(nodeConnection[i] == 0) numberOfZeros++;
+    }
+    if(numberOfZeros >= 3) {
         console.log('I entered here');
         numberOfIsland.push(islandFormation);
         islandFormation = [];
-    } 
+    }
+    numberOfZeros = 0;
    
     
     for(let i = 0; i < directions.length; i++) {
