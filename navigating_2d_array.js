@@ -59,6 +59,7 @@ const dfs = function(matrix, row, col, seen, islandFormation, numberOfIsland) {
         
     }
 
+    console.log('Island: ', islandFormation)
     let numberOfZeros = 0;
     for(let i = 0; i < nodeConnection.length; i++) {
         if(nodeConnection[i] == 0) numberOfZeros++;
@@ -83,5 +84,11 @@ const matrix = [
     [1,1,0,0,1],
     [0,0,0,1,1]
 ];
+const matrix2 = [
+    [0,1,0,1,0],
+    [1,0,1,0,1],
+    [0,1,1,1,0],
+    [1,0,1,0,1]
+]
 
-console.log(getNumberOfConnectedIsland(matrix));
+console.log(getNumberOfConnectedIsland(matrix2));
