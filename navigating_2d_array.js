@@ -86,7 +86,7 @@ const directions = [
     [0, -1] //left
 ];
 
-// Time: O(m * n), Space: O(n)
+// Time: O(m * n), Space: O(max(m, n))
 const numberOfIslandBFS = function(matrix) {
     if(matrix.length === 0) return 0;
     let islandCount = 0;
