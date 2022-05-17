@@ -50,6 +50,7 @@ const traversalBFS = function(graph) {
     return values;
 }
 
+// not working correctly
 const dfsTraversalGraph = function(graph, start) {
     const answer = [];
     const current = graph[start];
@@ -58,5 +59,21 @@ const dfsTraversalGraph = function(graph, start) {
     dfsTraversalGraph(graph, current[0])
 }
 
-console.log(dfsTraversalGraph(adjencyList, 0));
+const traversalDfs = function (vertex, graph, values = [],seen) {
+    values.push(vertex);
+    seen[vertex] = true;
+
+    const connections = graph[vertex];
+    for(let i = 0; i < connections.length; i++) {
+        const connection = connections[i];
+        if(!seen[connection]) {
+            traversalDfs(connection, graph, values, seen);
+        }
+    }
+    return values;
+}
+const values = [];
+const seen = {};
+console.log(traversalDfs(0, adjencyList, 0, values, seen));
+
 //console.log(traversalBFS(adjencyList));
