@@ -19,6 +19,7 @@ const directions = [
     [0, -1]
 ];
 
+// Time: O(n), Space: O(n)
 const wallsAndGates = function(matrix) {
     for(let row = 0; row < matrix.length; row++) {
         for(let col = 0; col < matrix[0].length; col++) {
