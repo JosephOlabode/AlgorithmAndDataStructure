@@ -50,4 +50,13 @@ const traversalBFS = function(graph) {
     return values;
 }
 
-console.log(traversalBFS(adjencyList));
+const dfsTraversalGraph = function(graph, start) {
+    const answer = [];
+    const current = graph[start];
+    if(current.length === 0) return answer;
+    answer.push(start);
+    dfsTraversalGraph(graph, current[0])
+}
+
+console.log(dfsTraversalGraph(adjencyList, 0));
+//console.log(traversalBFS(adjencyList));
