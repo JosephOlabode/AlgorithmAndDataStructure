@@ -8,6 +8,30 @@
  * INF is eqaul to 2147483647
  */
 
+
+const WALL = -1;
+const GATE = 0;
+const EMPTY = 2147483647;
+const directions = [
+    [-1, 0],
+    [0, 1],
+    [1, 0],
+    [0, -1]
+];
+
+const wallsAndGates = function(matrix) {
+    for(let row = 0; row < matrix.length; row++) {
+        for(let col = 0; col < matrix[0].length; col++) {
+            if(matrix[row][col] === GATE) {
+                dfs(matrix, row, col, 0);
+            }
+        }
+    }
+
+    return matrix;
+}
+
+
 const matrix1 = [
     [INF, -1, 0, INF],
     [INF, INF, INF, -1],
