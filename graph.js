@@ -2,7 +2,7 @@ const adjencyList = [
     [1, 3],
     [0],
     [3, 8],
-    [0, 2, 4, 5],
+    [0, 4, 5, 2],
     [3, 6],
     [3],
     [4, 7],
@@ -10,6 +10,7 @@ const adjencyList = [
     [2]
 ]
 
+// Time: O(n), Space: O(n)
 const bfsTraversalOfGraph = function(graph) {
     if(graph.length === 0) return;
     const queue = [...graph[0]];
