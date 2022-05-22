@@ -7,6 +7,7 @@
  * if it is possible to finish all courses
  */
 
+// Time: O(P + n^3), Space: O(n^2)
 const canFinish = function(n, prerequisite){
     const adjList = new Array(n).fill(0).map(() => []);
 
