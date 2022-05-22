@@ -4,7 +4,7 @@
  * 2. Develop the adjency representation from the structure -> either adjency list or adjency matrix
  * 3. Choose the best traversal mechanism to use to get ur answer (bfs, dfs).
  */
-
+// Time: O(n), Space: O(n)
 const numOfMinutes = function(n, headId, managers, informTime) {
     const adjList = managers.map(() => []);
 
