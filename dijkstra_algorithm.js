@@ -8,3 +8,8 @@
  * Send a signal from node k, return how long it takes for all
  * node to receive the signal. Return -1 if it's impossible.
  */
+
+const times = [
+    [1, 2, 9], [1, 4, 2], [2, 5, 1], [4, 2, 4], [4, 5, 6],
+    [3, 2, 3], [5, 3, 7], [3, 1, 5]
+];
