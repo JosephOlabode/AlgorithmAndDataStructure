@@ -13,3 +13,18 @@ const times = [
     [1, 2, 9], [1, 4, 2], [2, 5, 1], [4, 2, 4], [4, 5, 6],
     [3, 2, 3], [5, 3, 7], [3, 1, 5]
 ];
+
+const adjList = [
+ 1,   [2, 4],
+ 2,   [5],
+ 4,   [2, 5],
+ 3,   [2, 1],
+ 5,   [3]
+]
+
+const dijstraSolution = function (times, numberOfNodes, startNode, endNode) {
+    const infinityArray = new Array(numberOfNodes).fill(Infinity);
+    
+}
+
+dijstraSolution(times, 5, 1, 3);
