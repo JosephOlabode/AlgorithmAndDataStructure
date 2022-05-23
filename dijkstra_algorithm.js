@@ -22,6 +22,8 @@ const adjList = [
  5,   [3]
 ]
 
+// Time: (ElogN), Space: O(E + N)
+// E -> adjency list
 const dijstraSolution = function (times, numberOfNodes, startNode) {
     const distance = new Array(numberOfNodes).fill(Infinity);
     const adjList = distance.map(() => []);
