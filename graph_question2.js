@@ -7,7 +7,7 @@
  * if it is possible to finish all courses
  */
 
-// Time: O(P + n^3), Space: O(n^2)
+// Time: O(P * n^3), Space: O(n^2)
 const canFinish = function(n, prerequisite){
     const adjList = new Array(n).fill(0).map(() => []);
 
@@ -61,6 +61,8 @@ const canFinish = function(n, prerequisite){
  * 4   []
  * 5   [2, 3, 4] ]
  */
+
+//Time: O(p * n ^ 2), Space: O(n ^ 2);
 const canFinish2 = function(n, prerequisite) {
     const inDegree = new Array(n).fill(0);
     const adjList = inDegree.map(() => []);
@@ -95,4 +97,6 @@ const canFinish2 = function(n, prerequisite) {
             }
         }
     }
+
+    return count === n;
 }
