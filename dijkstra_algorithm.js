@@ -22,9 +22,40 @@ const adjList = [
  5,   [3]
 ]
 
-const dijstraSolution = function (times, numberOfNodes, startNode, endNode) {
-    const infinityArray = new Array(numberOfNodes).fill(Infinity);
+const dijstraSolution = function (times, numberOfNodes, startNode) {
+    const distance = new Array(numberOfNodes).fill(Infinity);
+    const adjList = distance.map(() => []);
     
+    distance[k - 1] = 0; // we subtracting one bcos our array index start from 0;
+
+    const heap = new PriorityQueue((a, b) => distance[a] < distance[b]);
+    heap.push(k - 1);
+
+    for(let i = 0; i < times.length; i++) {
+        const source = times[i][0];
+        const target = times[i][1];
+        const weight = times[i][2];
+
+        adjList[source - 1].push([target - 1, weight]);
+    }
+
+    while(!heap.isEmpty()) {
+        const currentVertex = heap.pop();
+        const adjacent = adjList[currentVertex];
+
+        for(let i = 0; i < adjacent.length; i++) {
+            const neighboringVertex = adjacent[i][0];
+            const weight = adjacent[i][1];
+
+            if(distance[currentVertex] + weight < distance[neighboringVertex]) {
+                distance[neighboringVertex] = distance[currentVertex] + weight;
+                heap.push(distance[neighboringVertex]);
+            }
+        }
+    }
+
+    const ans = Math.max(...distance);
+    return ans === Infinity ? -1 : ans;
 }
 
-dijstraSolution(times, 5, 1, 3);
+dijstraSolution(times, 5, 1);
