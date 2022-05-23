@@ -1,3 +1,5 @@
+
+// Time: O(N * E), Space: O(N)
 const delayTime = function(times, n, k) {
     const distances = new Array(n).fill(Infinity);
     distances[k-1] = 0;
