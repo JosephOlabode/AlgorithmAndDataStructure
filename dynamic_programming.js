@@ -7,6 +7,7 @@
  * Your first step can either be the first or second step
  */
 
+// Time: O(n ^ 2) , Space: O(n)
 const minCostClimbingStairs = function(cost) {
     const n = cost.length;
     return Math.min(minCost(n-1, cost), minCost(n-2, cost));
