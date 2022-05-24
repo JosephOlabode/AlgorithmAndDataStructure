@@ -41,7 +41,7 @@ const minCost2 = function(i, cost, dp) {
 }
 
 // this solution is using dynamic programming bottom-up tabulation approach
-
+// Time: O(n), Space: O(n)
 const minCostClimbingStairs3 = function (cost) {
     const dp = [];
     const n = cost.length;
