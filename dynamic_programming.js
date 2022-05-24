@@ -57,6 +57,7 @@ const minCostClimbingStairs3 = function (cost) {
 
 
 // optimized tabulation solution
+// Time: O(n), Space: O(1)
 const minCostClimbingStairs4 = function (cost) {
     const n = cost.length;
     if(n === 0) return 0;
