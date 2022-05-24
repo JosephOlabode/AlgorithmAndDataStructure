@@ -20,7 +20,7 @@ const minCost = function(i, cost) {
     return cost[i] + Math.min(minCost(i-1, cost), minCost(i-2, cost));
 }
 
-// this solution is using dynamic programming
+// this solution is using dynamic programming top-down approach
 // Time: O(n), Space: O(n)
 const minCostClimbingStairs2 = function(cost) {
     const n = cost.length;
@@ -38,4 +38,19 @@ const minCost2 = function(i, cost, dp) {
     }
 
     return dp[i];
+}
+
+// this solution is using dynamic programming bottom-up tabulation approach
+
+const minCostClimbingStairs3 = function (cost) {
+    const dp = [];
+    const n = cost.length;
+    for(let i = 0; i < n; i++ ) {
+       if(i < 2) {
+           dp[i] = cost[i];
+       } else {
+           dp[i] = cost[i] + Math.min(dp[i -1], dp[i - 2]);
+       }
+    }
+    return Math.min(dp[n - 1], dp[n - 2]);
 }
