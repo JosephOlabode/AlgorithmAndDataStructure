@@ -21,7 +21,7 @@ const minCost = function(i, cost) {
 }
 
 // this solution is using dynamic programming
-
+// Time: O(n), Space: O(n)
 const minCostClimbingStairs2 = function(cost) {
     const n = cost.length;
     return Math.min(minCost2(n-1, cost, dp), minCost2(n-2, cost, dp));
