@@ -12,6 +12,7 @@
 
 const DIRECTIONS = [[-2, -1], [-2, 1],[-1, 2], [1, 2], [2, 1], [2, -1], [1, -2], [-1, -2]];
 
+// Time: O(8 ^ k), Space: O( 8 ^ k)
 const knightProbability = function(N, k, r, c) {
     if(r < 0 || r >= N || c < 0 || c >= N) return 0;
 
