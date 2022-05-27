@@ -28,6 +28,7 @@ const knightProbability = function(N, k, r, c) {
 }
 
 // this an improved solution with dp
+// Time: O((N ^ 2) * k), Space: O((N ^ 2) * k)
 const knightProbability2 = function(N, k, r, c) {
     const dp = new Array(k + 1).fill(0)
     .map(() => new Array(N).fill(0)
