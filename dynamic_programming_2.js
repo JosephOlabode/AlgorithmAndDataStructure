@@ -57,6 +57,30 @@ const recurse = function (N, k, r, c, dp) {
 
 // Developing the tabulation solution bottom-up solution
 
-const knightProbability3 = function() {
-    
+const knightProbability3 = function(N, k, r, c) {
+    const dp = new Array(k + 1).fill(0).map(() => new Array(N).map(() => new Array(N).fill(0)));
+
+    dp[0][r][c] = 1;
+    for(let step = 1; step <= k; step++) {
+        for(let row = 0; row < N; row++) {
+            for(let col = 0; col < N; col++) {
+                const dir = DIRECTIONS[i];
+                const prevRow = row + dir[0];
+                const prevCol = col + dir[1];
+
+                if(prevRow >= 0 && prevRow < N && prevCol >= 0 && prevCol < N) {
+                    dp[step][row][col] += dp[step - 1][prevRow][prevCol] / 8;
+                }
+            }
+        }
+    }
+
+    let res = 0;
+    for(let i = 0; i < N; i++) {
+        for(let j = 0; j < N; j++) {
+            res += dp[k][i][j];
+        }
+    }
+
+    return res;
 }
