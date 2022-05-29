@@ -58,6 +58,7 @@ const recurse = function (N, k, r, c, dp) {
 // Developing the tabulation solution bottom-up solution
 
 //Time: O((N ^2) * k), Space: O((N ^2) * k)
+// Optimized space, Space: Object(N ^ 2);
 const knightProbability3 = function(N, k, r, c) {
     //const dp = new Array(k + 1).fill(0).map(() => new Array(N).map(() => new Array(N).fill(0)));
 
