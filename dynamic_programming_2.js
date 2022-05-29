@@ -65,12 +65,14 @@ const knightProbability3 = function(N, k, r, c) {
     for(let step = 1; step <= k; step++) {
         for(let row = 0; row < N; row++) {
             for(let col = 0; col < N; col++) {
-                const dir = DIRECTIONS[i];
-                const prevRow = row + dir[0];
-                const prevCol = col + dir[1];
-
-                if(prevRow >= 0 && prevRow < N && prevCol >= 0 && prevCol < N) {
-                    dp[step][row][col] += dp[step - 1][prevRow][prevCol] / 8;
+                for(let i = 0; i < DIRECTIONS.length; i++) {
+                    const dir = DIRECTIONS[i];
+                    const prevRow = row + dir[0];
+                    const prevCol = col + dir[1];
+    
+                    if(prevRow >= 0 && prevRow < N && prevCol >= 0 && prevCol < N) {
+                        dp[step][row][col] += dp[step - 1][prevRow][prevCol] / 8;
+                    }
                 }
             }
         }
