@@ -54,3 +54,9 @@ const recurse = function (N, k, r, c, dp) {
     dp[k][r][c] = res;
     return dp[k][r][c];
 }
+
+// Developing the tabulation solution bottom-up solution
+
+const knightProbability3 = function() {
+    
+}
