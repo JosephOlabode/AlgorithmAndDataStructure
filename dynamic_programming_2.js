@@ -59,9 +59,12 @@ const recurse = function (N, k, r, c, dp) {
 
 //Time: O((N ^2) * k), Space: O((N ^2) * k)
 const knightProbability3 = function(N, k, r, c) {
-    const dp = new Array(k + 1).fill(0).map(() => new Array(N).map(() => new Array(N).fill(0)));
+    //const dp = new Array(k + 1).fill(0).map(() => new Array(N).map(() => new Array(N).fill(0)));
 
-    dp[0][r][c] = 1;
+    const prevDp = new Array(N).fill(0).map(() => new Array(N).fill(0));
+    const currDp = new Array(N).fill(0).map(() => new Array(N).fill(0));
+
+    prevDp[0][r][c] = 1;
     for(let step = 1; step <= k; step++) {
         for(let row = 0; row < N; row++) {
             for(let col = 0; col < N; col++) {
@@ -71,17 +74,20 @@ const knightProbability3 = function(N, k, r, c) {
                     const prevCol = col + dir[1];
     
                     if(prevRow >= 0 && prevRow < N && prevCol >= 0 && prevCol < N) {
-                        dp[step][row][col] += dp[step - 1][prevRow][prevCol] / 8;
+                        currDp[step][row][col] += prevDp[step - 1][prevRow][prevCol] / 8;
                     }
                 }
             }
         }
     }
 
+    prevDp = currDp;
+    currDp = new Array(N).fill(0).map(() => new Array(N).fill(0));
+
     let res = 0;
     for(let i = 0; i < N; i++) {
         for(let j = 0; j < N; j++) {
-            res += dp[k][i][j];
+            res += prevDp[k][i][j];
         }
     }
 
