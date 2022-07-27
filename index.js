@@ -13,7 +13,11 @@
 
     const sum = array.reduce((item, total) => {
         return total += item;
-    }, 0)
+    })
 
     console.log(sum);
+
+    const numbers = [[1,2,3], [3,8,4], [2,9,3]];
+    const result = numbers.flatMap((array) => [array.reduce((item, total) => total += item)]);
+    console.log(result);
 })();
