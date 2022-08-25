@@ -16,7 +16,7 @@ function findPairSum(nums, target) {
 let nums = [3,2,4];
 let target = 6;
 //second solution
-// I will use two pointer technique, Time: O(n), Space: O(1)
+// I will use two pointer technique, Time: O(n), Space: O(n)
 function findPairSum2(nums, target) {
     const numObject = {}
     for(let i = 0; i < nums.length; i++) {
@@ -31,11 +31,25 @@ function findPairSum2(nums, target) {
     return null
 }
 
+//third solution 
+// Time: O(n), Space: O(n)
+function findPairSum3(nums, target) {
+    const numObject = {}
+    for(let i = 0; i < nums.length; i++) {
+        let numToFind = target - nums[i];
+        if(!isNaN(numObject[numToFind]) && numObject[numToFind] !== i){
+            return [i, numObject[numToFind]];
+        } else {
+            numObject[nums[i]] = i;
+        }
+    }
+    return null
+}
 
-// third solution
+// fourth solution
 // I will use the arithmetic difference method
 //Time: O(n ^ 2), Space: O(1)
-function findPairSum3(nums, target) {
+function findPairSum4(nums, target) {
     for(let i = 0; i < nums.length; i++) {
         let numToFind = target - nums[i];
         const result = findNumber(numToFind, nums);
